@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dinigt7s1i0ts"]
+
+[ext_resource type="PackedScene" uid="uid://c78xvjt0wab1q" path="res://entities/character/tennis_player/tennis_player.tscn" id="1_7xbd6"]
+[ext_resource type="Script" path="res://entities/character/Enemy/pong_opponent/pong_opponent.gd" id="2_ynghn"]
+
+[node name="pong_opponent" instance=ExtResource("1_7xbd6")]
+script = ExtResource("2_ynghn")
+move_speed = 15.0
+rot_speed = 0.0

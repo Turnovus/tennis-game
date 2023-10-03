@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpmwjdu2d7nvm"]
+
+[ext_resource type="PackedScene" uid="uid://dj8igde22s5nc" path="res://levels/settings_menu/settings_menu.tscn" id="1_acr7l"]
+[ext_resource type="Script" path="res://root/root.gd" id="1_gevim"]
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_gevim")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+
+[node name="settings_menu" parent="Control" instance=ExtResource("1_acr7l")]
+layout_mode = 1

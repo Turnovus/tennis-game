@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci2jsr3n54tnr"]
+
+[ext_resource type="PackedScene" uid="uid://67pbphr646w2" path="res://entities/ball/ball.tscn" id="1_v7xdy"]
+[ext_resource type="Script" path="res://entities/ball/ball_pong.gd" id="2_rsbeo"]
+
+[node name="ball_pong" instance=ExtResource("1_v7xdy")]
+script = ExtResource("2_rsbeo")
+boundary_right = 1152
+boundary_bottom = 642
+base_speed = 300.0
+collision_resolution = 0.1
+radius = 16.0
+color = Color(0.85098, 0.145098, 0.372549, 1)

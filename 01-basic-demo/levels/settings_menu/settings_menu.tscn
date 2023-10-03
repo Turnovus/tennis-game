@@ -1,0 +1,113 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj8igde22s5nc"]
+
+[ext_resource type="Script" path="res://levels/settings_menu/settings_menu.gd" id="1_vj628"]
+
+[node name="settings_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vj628")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButtons" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="PlayElimination" type="Button" parent="HBoxContainer/PlayButtons"]
+layout_mode = 2
+tooltip_text = "Go up against the training dummies and try to wipe them out."
+text = "Play Elimination"
+
+[node name="PlayPong" type="Button" parent="HBoxContainer/PlayButtons"]
+layout_mode = 2
+tooltip_text = "Play a game of pong against the pong dummy."
+text = "Play Pong"
+
+[node name="PlaySettings" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Volley" type="CheckBox" parent="HBoxContainer/PlaySettings"]
+layout_mode = 2
+tooltip_text = "If enabled, volley mode will be active. Whenever a player or NPC hits the ball, it will go faster. When the ball hits a wall, it loses one volley."
+text = "Enable Volley"
+
+[node name="VolleyAllOrNone" type="CheckBox" parent="HBoxContainer/PlaySettings"]
+layout_mode = 2
+tooltip_text = "If enabled, the volley counter will be reset to 0 if the ball hits a wall."
+text = "All-or-Nothing Volley"
+
+[node name="Grabbing" type="CheckBox" parent="HBoxContainer/PlaySettings"]
+layout_mode = 2
+tooltip_text = "If enabled, the ball will ignore volley speed while in the hit zone, making it easier to hit."
+text = "Enable Grabbing"
+
+[node name="Momentum" type="CheckBox" parent="HBoxContainer/PlaySettings"]
+layout_mode = 2
+tooltip_text = "If enabled, the player will use a momentum system, requiring time to stop or change direction.
+Use the tweak values on the right to configure this."
+text = "Player Momentum"
+
+[node name="Collide" type="CheckBox" parent="HBoxContainer/PlaySettings"]
+layout_mode = 2
+tooltip_text = "When enabled, the ball bounces off of players and NPCs. Recommended for elimination, but not for pong."
+button_pressed = true
+text = "Ball Collides with Characters"
+
+[node name="Debug" type="CheckBox" parent="HBoxContainer/PlaySettings"]
+layout_mode = 2
+tooltip_text = "Draw debug info about entities."
+text = "Show Debug Info"
+
+[node name="Tweaks" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerAccelLabel" type="Label" parent="HBoxContainer/Tweaks"]
+layout_mode = 2
+text = "Player Acceleration"
+
+[node name="PlayerAccel" type="SpinBox" parent="HBoxContainer/Tweaks"]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+value = 1.5
+editable = false
+
+[node name="PlayerDecelLabel" type="Label" parent="HBoxContainer/Tweaks"]
+layout_mode = 2
+text = "Player Deceleration"
+
+[node name="PlayerDecel" type="SpinBox" parent="HBoxContainer/Tweaks"]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+value = 1.0
+editable = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = 31.0
+offset_right = 193.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press \"Escape\" at any time to return to this menu!
+Mouse over buttons to read about what they do."
+
+[connection signal="pressed" from="HBoxContainer/PlayButtons/PlayElimination" to="." method="elimination"]
+[connection signal="pressed" from="HBoxContainer/PlayButtons/PlayPong" to="." method="pong"]
+[connection signal="pressed" from="HBoxContainer/PlaySettings/Momentum" to="." method="_on_momentum_toggled"]

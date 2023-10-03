@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://do3ehroxvqhmo"]
+
+[ext_resource type="PackedScene" uid="uid://c78xvjt0wab1q" path="res://entities/character/tennis_player/tennis_player.tscn" id="1_tsqq3"]
+[ext_resource type="Script" path="res://entities/character/Enemy/dummy/dummy.gd" id="2_ibek6"]
+[ext_resource type="AudioStream" uid="uid://babgrwdgm0piu" path="res://audio/combat/hurt_enemy.wav" id="3_ivlxd"]
+
+[node name="dummy" instance=ExtResource("1_tsqq3")]
+script = ExtResource("2_ibek6")
+radius = 32.0
+
+[node name="Label" parent="." index="2"]
+text = ""
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="Audio" index="2"]
+stream = ExtResource("3_ivlxd")
+
+[node name="DieTimer" type="Timer" parent="." index="5"]
+wait_time = 0.4
+one_shot = true

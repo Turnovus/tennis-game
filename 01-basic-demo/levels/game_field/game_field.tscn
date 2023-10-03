@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b34em1bu4nadc"]
+
+[ext_resource type="PackedScene" uid="uid://67pbphr646w2" path="res://entities/ball/ball.tscn" id="1_66cci"]
+[ext_resource type="PackedScene" uid="uid://dvdv4qrww61jc" path="res://entities/character/player/player.tscn" id="3_nvf7d"]
+[ext_resource type="PackedScene" uid="uid://do3ehroxvqhmo" path="res://entities/character/Enemy/dummy/dummy.tscn" id="4_dm141"]
+
+[node name="game_field" type="Node2D"]
+
+[node name="ball" parent="." instance=ExtResource("1_66cci")]
+position = Vector2(655, 173)
+rotation = -4.8398
+boundary_right = 1152
+boundary_bottom = 648
+base_speed = 350.0
+collision_resolution = 10.0
+radius = 10.0
+
+[node name="player" parent="." instance=ExtResource("3_nvf7d")]
+position = Vector2(605, 361)
+
+[node name="dummy" parent="." instance=ExtResource("4_dm141")]
+position = Vector2(971, 409)
+
+[node name="dummy2" parent="." instance=ExtResource("4_dm141")]
+position = Vector2(172, 483)
+
+[node name="dummy3" parent="." instance=ExtResource("4_dm141")]
+position = Vector2(327, 187)
+
+[node name="dummy4" parent="." instance=ExtResource("4_dm141")]
+position = Vector2(958, 148)

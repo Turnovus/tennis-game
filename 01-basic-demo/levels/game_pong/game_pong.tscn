@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8xsol65p6o5k"]
+
+[ext_resource type="PackedScene" uid="uid://dvdv4qrww61jc" path="res://entities/character/player/player.tscn" id="1_mv6oo"]
+[ext_resource type="Script" path="res://levels/game_pong/game_pong.gd" id="1_pujsa"]
+[ext_resource type="AudioStream" uid="uid://c5atdf1yy3cny" path="res://audio/game/pong_count.wav" id="3_jntto"]
+[ext_resource type="AudioStream" uid="uid://chqg8ih2wwefw" path="res://audio/game/pong_start.wav" id="4_rwbj1"]
+[ext_resource type="AudioStream" uid="uid://cycs43iqj6ms2" path="res://audio/game/pong_score.wav" id="5_ub8dn"]
+[ext_resource type="PackedScene" uid="uid://dinigt7s1i0ts" path="res://entities/character/Enemy/pong_opponent/pong_opponent.tscn" id="6_j35yc"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_pujsa")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(576, 0)
+points = PackedVector2Array(0, 0, 0, 648)
+default_color = Color(0, 0, 0, 1)
+
+[node name="player" parent="." instance=ExtResource("1_mv6oo")]
+position = Vector2(107, 324)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Count" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_jntto")
+
+[node name="Start" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_rwbj1")
+
+[node name="Score" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_ub8dn")
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="PlayerScore" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="EnemyScore" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1111.0
+offset_right = 1151.0
+offset_bottom = 23.0
+grow_horizontal = 0
+horizontal_alignment = 2
+
+[node name="pong_opponent" parent="." instance=ExtResource("6_j35yc")]
+position = Vector2(1080, 324)
+move_speed = 1.4
+rot_speed = 0.05
+radius = 32.0
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timeout"]

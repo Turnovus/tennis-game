@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvdv4qrww61jc"]
+
+[ext_resource type="PackedScene" uid="uid://c78xvjt0wab1q" path="res://entities/character/tennis_player/tennis_player.tscn" id="1_5w5wa"]
+[ext_resource type="Script" path="res://entities/character/player/player.gd" id="2_d646n"]
+[ext_resource type="AudioStream" uid="uid://c6pq0g4c0ovgq" path="res://audio/combat/hurt_player.wav" id="3_u5kky"]
+
+[node name="player" instance=ExtResource("1_5w5wa")]
+script = ExtResource("2_d646n")
+movement_speed = 10
+cooldown = 40
+radius = 32.0
+color = Color(0.847059, 0, 0.847059, 1)
+
+[node name="Label" parent="." index="2"]
+visible = false
+text = ""
+
+[node name="CollisionShape2D" parent="HitArea" index="0"]
+position = Vector2(0, 49)
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="Audio" index="2"]
+stream = ExtResource("3_u5kky")

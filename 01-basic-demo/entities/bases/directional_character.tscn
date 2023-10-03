@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw170gn4idfyn"]
+
+[ext_resource type="Script" path="res://entities/bases/directional_character.gd" id="1_ksv58"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bqtb"]
+radius = 32.0
+
+[node name="directional_character" type="Area2D"]
+script = ExtResource("1_ksv58")
+radius = 32.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1bqtb")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 44.8)
+width = 5.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "X: 0 Y: 0 R: 0.000000"

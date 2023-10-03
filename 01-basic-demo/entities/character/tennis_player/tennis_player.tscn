@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c78xvjt0wab1q"]
+
+[ext_resource type="PackedScene" uid="uid://bw170gn4idfyn" path="res://entities/bases/directional_character.tscn" id="1_j53hf"]
+[ext_resource type="Script" path="res://entities/character/tennis_player/tennis_player.gd" id="2_m5q6a"]
+[ext_resource type="AudioStream" uid="uid://c6nkaohtq7t81" path="res://audio/tennis/swing_miss.wav" id="3_4styv"]
+[ext_resource type="AudioStream" uid="uid://dtgvpxqtmlbar" path="res://audio/tennis/swing_hit.wav" id="4_03uio"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jrhkk"]
+radius = 34.0147
+
+[node name="tennis_player" instance=ExtResource("1_j53hf")]
+script = ExtResource("2_m5q6a")
+cooldown = 100
+radius = 1.0
+
+[node name="HitArea" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" index="0"]
+position = Vector2(0, 44)
+shape = SubResource("CircleShape2D_jrhkk")
+
+[node name="Audio" type="Node2D" parent="." index="4"]
+
+[node name="SwingMiss" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = ExtResource("3_4styv")
+
+[node name="SwingHit" type="AudioStreamPlayer2D" parent="Audio" index="1"]
+stream = ExtResource("4_03uio")
